@@ -1,3 +1,12 @@
 [submodule "sui6br"]
 	path = sui6br
 	url = https://github.com/ddalpra/sui6br.git
+[submodule "sui0jt"]
+	path = sui0jt
+	url = https://github.com/ddalpra/sui0jt.git
+[submodule "sui7jb"]
+	path = sui7jb
+	url = https://github.com/ddalpra/sui7jb.git
+[submodule "sui4jh"]
+	path = sui4jh
+	url = https://github.com/ddalpra/sui4jh.git
