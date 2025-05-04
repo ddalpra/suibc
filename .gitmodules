@@ -10,3 +10,6 @@
 [submodule "sui4jh"]
 	path = sui4jh
 	url = https://github.com/ddalpra/sui4jh.git
+[submodule "sui8kp"]
+	path = sui8kp
+	url = https://github.com/ddalpra/sui8kp.git
