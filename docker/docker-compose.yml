@@ -28,7 +28,6 @@ services:
       - "5439:5432"
     networks:
       - db-keycloak
-
   keycloak:
     image: quay.io/keycloak/keycloak:26.2.0
     command: ["start-dev"]
@@ -58,7 +57,24 @@ services:
       - database
     networks:
       - db-keycloak
-
+  sui8kp-db:
+    image: postgres:17.4
+    container_name: sui8kp
+    environment:
+    # add multiple schemas
+      # POSTGRES_MULTIPLE_DATABASES: ${DB_DATABASE},${KEYCLOAK_DATABASE}
+      POSTGRES_DB: ${KP_DATABASE}
+      POSTGRES_USER: ${KP_USER}
+      POSTGRES_PASSWORD: ${KP_PASSWORD}
+    hostname: local
+    restart: always
+    volumes:
+      - ./db-sui8kp:/var/lib/postgresql/data/
+      - ./sql-sui8kp:/docker-entrypoint-initdb.d/:ro
+    ports:
+      - "5434:5432"
+    networks:
+      - db-keycloak
 networks:
   db-keycloak:
     driver: bridge
