@@ -75,6 +75,24 @@ services:
       - "5434:5432"
     networks:
       - db-keycloak
+  su0jt-db:
+    image: postgres:17.4
+    container_name: sui0jt
+    environment:
+    # add multiple schemas
+      # POSTGRES_MULTIPLE_DATABASES: ${DB_DATABASE},${KEYCLOAK_DATABASE}
+      POSTGRES_DB: ${JT_DATABASE}
+      POSTGRES_USER: ${JT_USER}
+      POSTGRES_PASSWORD: ${JT_PASSWORD}
+    hostname: local
+    restart: always
+    volumes:
+      - ./db-sui0jt:/var/lib/postgresql/data/
+      - ./sql-sui0jt:/docker-entrypoint-initdb.d/:ro
+    ports:
+      - "5435:5432"
+    networks:
+      - db-keycloak
 networks:
   db-keycloak:
     driver: bridge
